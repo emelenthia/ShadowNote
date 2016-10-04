@@ -28,9 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.dataGridView_Main = new System.Windows.Forms.DataGridView();
 			this.Column_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +58,6 @@
 			this.tabControl_Main = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.dataGridView_Rank = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +70,7 @@
 			this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Main)).BeginInit();
 			this.tabControl_Main.SuspendLayout();
@@ -81,16 +81,16 @@
 			// 
 			// chart1
 			// 
-			chartArea3.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea3);
-			legend3.Name = "Legend1";
-			this.chart1.Legends.Add(legend3);
+			chartArea1.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea1);
+			legend1.Name = "Legend1";
+			this.chart1.Legends.Add(legend1);
 			this.chart1.Location = new System.Drawing.Point(995, 32);
 			this.chart1.Name = "chart1";
-			series3.ChartArea = "ChartArea1";
-			series3.Legend = "Legend1";
-			series3.Name = "Series1";
-			this.chart1.Series.Add(series3);
+			series1.ChartArea = "ChartArea1";
+			series1.Legend = "Legend1";
+			series1.Name = "Series1";
+			this.chart1.Series.Add(series1);
 			this.chart1.Size = new System.Drawing.Size(260, 238);
 			this.chart1.TabIndex = 0;
 			this.chart1.Text = "chart1";
@@ -319,7 +319,7 @@
 			this.tabControl_Main.Location = new System.Drawing.Point(158, 32);
 			this.tabControl_Main.Name = "tabControl_Main";
 			this.tabControl_Main.SelectedIndex = 0;
-			this.tabControl_Main.Size = new System.Drawing.Size(822, 212);
+			this.tabControl_Main.Size = new System.Drawing.Size(822, 220);
 			this.tabControl_Main.TabIndex = 13;
 			// 
 			// tabPage1
@@ -328,7 +328,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(814, 186);
+			this.tabPage1.Size = new System.Drawing.Size(814, 194);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Class";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -343,16 +343,6 @@
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Rank";
 			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
-			// tabPage3
-			// 
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(814, 186);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Deck";
-			this.tabPage3.UseVisualStyleBackColor = true;
 			// 
 			// dataGridView_Rank
 			// 
@@ -467,6 +457,16 @@
 			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
 			this.dataGridViewTextBoxColumn11.ReadOnly = true;
 			this.dataGridViewTextBoxColumn11.Width = 68;
+			// 
+			// tabPage3
+			// 
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(814, 186);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "Deck";
+			this.tabPage3.UseVisualStyleBackColor = true;
 			// 
 			// LogAna
 			// 

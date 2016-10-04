@@ -123,6 +123,140 @@ namespace ShadowNote_CS
 		}
 
 
+		public int GetRankNumber(string str, int mode) //ランクを低い方から数えた際の順番を取得。配列の添字に使う。細かいモードと大雑把モードが有る
+		{
+
+			int ret = 0;
+			if (mode == 0) //細かいモード
+			{
+				switch (str)
+				{
+				case "フリー":
+					ret = 0;
+					break;
+				case "Begginer0":
+					ret = 1;
+					break;
+				case "Beginner1":
+					ret = 2;
+					break;
+				case "Beginner2":
+					ret = 3;
+					break;
+				case "Beginner3":
+					ret = 4;
+					break;
+				case "D0":
+					ret = 5;
+					break;
+				case "D1":
+					ret = 6;
+					break;
+				case "D2":
+					ret = 7;
+					break;
+				case "D3":
+					ret = 8;
+					break;
+				case "C0":
+					ret = 9;
+					break;
+				case "C1":
+					ret = 10;
+					break;
+				case "C2":
+					ret = 11;
+					break;
+				case "C3":
+					ret = 12;
+					break;
+				case "B0":
+					ret = 13;
+					break;
+				case "B1":
+					ret = 14;
+					break;
+				case "B2":
+					ret = 15;
+					break;
+				case "B3":
+					ret = 16;
+					break;
+				case "A0":
+					ret = 17;
+					break;
+				case "A1":
+					ret = 18;
+					break;
+				case "A2":
+					ret = 19;
+					break;
+				case "A3":
+					ret = 20;
+					break;
+				case "AA0":
+					ret = 21;
+					break;
+				case "AA1":
+					ret = 22;
+					break;
+				case "AA2":
+					ret = 23;
+					break;
+				case "AA3":
+					ret = 24;
+					break;
+				case "Master":
+					ret = 25;
+					break;
+				default:
+					ret = -1;
+					break;
+				}
+			}
+			else //大雑把モード
+			{
+				switch (str)
+				{
+				case "フリー":
+					ret = 0;
+					break;
+				case "A0":
+					ret = 2;
+					break;
+				case "A1":
+					ret = 3;
+					break;
+				case "A2":
+					ret = 4;
+					break;
+				case "A3":
+					ret = 5;
+					break;
+				case "AA0":
+					ret = 6;
+					break;
+				case "AA1":
+					ret = 7;
+					break;
+				case "AA2":
+					ret = 8;
+					break;
+				case "AA3":
+					ret = 9;
+					break;
+				case "Master":
+					ret = 10;
+					break;
+				default: //それ以外ならA未満
+					ret = 1;
+					break;
+				}
+			}
+			return ret;
+		}
+
+
 		//DeckList.txtからデッキリストを読み込む
 		public void DeckListLoad(ComboBox comboBox_MyDec,ComboBox comboBox_EneDec, ArrayList[] ene_decklist, ArrayList mydeckclass)
 		{
