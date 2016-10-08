@@ -32,19 +32,25 @@ namespace ShadowNote_CS
 		{
 			m_com = new Common();
 			ComboBox comboBox_dummy = new ComboBox();
-            m_ene_decklist = new ArrayList[Common.numclass];
+			m_ene_decklist = new ArrayList[Common.numclass];
 			for (int i = 0; i < Common.numclass; i++)
 			{
 				m_ene_decklist[i] = new ArrayList();
 			}
 			m_mydeckclass = new ArrayList();
+			comboBox_Time.Items.Add("Today");
+			comboBox_Time.Items.Add("Week");
+			comboBox_Time.Items.Add("Month");
+			comboBox_Time.Items.Add("Season");
+			comboBox_Time.SelectedIndex = 0;
+			comboBox_Time.Update();
 
 			Analysising(0);
 			Analysising(1);
 			Analysising(2);
 
 			m_com.DeckListLoad(comboBox_Mydec, comboBox_dummy, m_ene_decklist, m_mydeckclass);
-			m_com.SetClassList(comboBox_Eneclass);
+			m_com.SetClassList(comboBox_Myclass);
 
 			comboBox_dummy = null;
 		}
@@ -85,7 +91,7 @@ namespace ShadowNote_CS
 				dataGridView_Main.Visible = false;
 			}
 		}
-		
+
 
 		private void button_Ana_Click(object sender, EventArgs e)
 		{
@@ -100,7 +106,6 @@ namespace ShadowNote_CS
 			m_numwinsecond = new ArrayList();
 			m_numlosesecond = new ArrayList();
 
-			bool bMydeck = checkBox_Mydec.Checked;
 
 			//数えるための配列を作る
 			m_numwinfirst.Clear();
@@ -208,7 +213,7 @@ namespace ShadowNote_CS
 						while (sr.EndOfStream == false)
 						{
 							readstr = sr.ReadLine().Split(',');
-							if(readstr[0] == "e")
+							if (readstr[0] == "e")
 							{
 								m_numwinfirst.Add(MakeAnaData(readstr[2], m_com.GetClassNumber(readstr[1])));
 								m_numwinsecond.Add(MakeAnaData(readstr[2], m_com.GetClassNumber(readstr[1])));
@@ -225,12 +230,79 @@ namespace ShadowNote_CS
 			using (StreamReader sr = new StreamReader("BattleLog.log"))
 			{
 				String[] readstr;
+				bool bNotCount = false;
 
 				while (sr.EndOfStream == false) //EOFならtrueっぽいよ
 				{
 					readstr = sr.ReadLine().Split(',');
 
-					if(bMydeck && readstr[1] == (string)comboBox_Mydec.SelectedItem || !bMydeck) //もしも自分のデッキ固定にチェックが付いていたら
+					//チェックボックスの状態によってはカウントしないフラグを立てる
+					//もっと綺麗な方法があるかな?
+
+					bNotCount = false;
+					if (checkBox_Mydec.Checked)
+					{
+						if (readstr[1] != (string)comboBox_Mydec.SelectedItem) //選択されていたデッキと同じじゃないなら
+						{
+							bNotCount = true;
+						}
+					}
+					if (checkBox_Myclass.Checked)
+					{
+						if (readstr[0] == (string)comboBox_Mydec.SelectedItem)
+						{
+							bNotCount = true;
+						}
+					}
+					if (checkBox_Eneclass.Checked)
+					{
+						if (readstr[2] == (string)comboBox_Eneclass.SelectedItem)
+						{
+							bNotCount = true;
+						}
+					}
+					if (checkBox_Time.Checked)
+					{
+						DateTime dt = DateTime.Now;
+						DateTime read_dt = m_com.MakeDateTime(readstr[7], readstr[8]);
+
+						//判定は全部Near(直近24時間とかそんなの)
+						TimeSpan ts = dt - read_dt;
+
+						switch ((string)comboBox_Time.SelectedItem)
+						{
+						case "Today":
+							{
+								if (ts.Days != 0)
+								{
+									bNotCount = true;
+								}
+								imakonohen
+							}
+							break;
+						case "Week":
+							{
+
+							}
+							break;
+						case "Month":
+							{
+
+							}
+							break;
+						case "Season":
+							{
+
+							}
+							break;
+						}
+					}
+					if(checkBox_TimeDesign.Checked)
+					{
+
+					}
+
+					if (!bNotCount)
 					{
 						if (readstr[4] == "w")
 						{
@@ -255,6 +327,7 @@ namespace ShadowNote_CS
 							}
 						}
 					}
+
 				}
 			}
 
@@ -316,7 +389,7 @@ namespace ShadowNote_CS
 				}
 				else if (numfirst + numsecond == 0) //両方0回の場合
 				{
-					if(mode != 2) //デッキ毎モードでは、両方0回の時は登録しない
+					if (mode != 2) //デッキ毎モードでは、両方0回の時は登録しない
 					{
 						pDGV.Rows.Add(num_add, name_now, 0, 0, 0.0, 0, 0, 0.0, 0, 0, 0.0);
 					}

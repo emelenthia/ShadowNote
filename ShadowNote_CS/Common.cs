@@ -296,6 +296,64 @@ namespace ShadowNote_CS
 			comboBox_EneDec.Update();
 		}
 
+
+		//DateTimeを8桁の日付か6桁の時刻の文字列にして返す
+		public const int COM_DATE_DAY = 0;
+		public static readonly int COM_DATE_TIME = 1;
+		public String FormatTime(DateTime dt, int mode)
+		{
+			String ret_str;
+			if(mode==COM_DATE_DAY)
+			{
+				String month = dt.Month.ToString();
+				AddZeroTime(month);
+				String day = dt.Day.ToString();
+				AddZeroTime(day);
+				ret_str = dt.Year.ToString() + month + day;
+			}
+			else if(mode==COM_DATE_TIME)
+			{
+				String hour = dt.Hour.ToString();
+				AddZeroTime(hour);
+				String minute = dt.Minute.ToString();
+				AddZeroTime(minute);
+				String second = dt.Second.ToString();
+				AddZeroTime(second);
+				ret_str = hour + minute + second;
+			}
+			else
+			{
+				return "error in FormatTime.";
+			}
+
+			return ret_str;
+		}
+
+		//処理しやすいように一桁なら0を付ける
+		public void AddZeroTime(String time)
+		{
+			if (int.Parse(time) < 10)
+			{
+				time = "0" + time;
+			}
+		}
+
+		public DateTime MakeDateTime(String _day,String _time) //8桁の日付と6桁の時刻からDateTime構造体を作成します
+		{
+			DateTime ret_dt;
+			int year = int.Parse(_day.Substring(0, 4));
+			int month = int.Parse(_day.Substring(4, 2));
+			int day = int.Parse(_day.Substring(6, 2));
+
+			int hour = int.Parse(_time.Substring(0, 2));
+			int minute = int.Parse(_time.Substring(2, 2));
+			int second = int.Parse(_time.Substring(4, 2));
+
+			ret_dt = new DateTime(year, month, day, hour, minute, second);
+
+			return ret_dt;
+		}
+
 	}
 
 }

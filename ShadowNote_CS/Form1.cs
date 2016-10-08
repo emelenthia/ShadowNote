@@ -47,8 +47,8 @@ namespace ShadowNote_CS
 				writestr += "," + comboBox_Rank.Text;
 
 				DateTime dt = DateTime.Now;
-				writestr += "," + dt.Year.ToString() + dt.Month.ToString() + dt.Day.ToString();
-				writestr += "," + dt.Hour.ToString() + dt.Minute.ToString() + dt.Second.ToString();
+				writestr += "," + m_com.FormatTime(dt, Common.COM_DATE_DAY);
+				writestr += "," + m_com.FormatTime(dt, Common.COM_DATE_TIME);
 
 				sw.Write(writestr + "\n");
 				com = null;
@@ -59,6 +59,7 @@ namespace ShadowNote_CS
 				m_timer.Start();
             }
 		}
+
 
 		private void TimeCount(object sender, EventArgs e)
 		{
