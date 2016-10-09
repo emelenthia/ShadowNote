@@ -306,19 +306,19 @@ namespace ShadowNote_CS
 			if(mode==COM_DATE_DAY)
 			{
 				String month = dt.Month.ToString();
-				AddZeroTime(month);
+				AddZeroTime(ref month); //refを付ける必要があるとかめんどい
 				String day = dt.Day.ToString();
-				AddZeroTime(day);
+				AddZeroTime(ref day);
 				ret_str = dt.Year.ToString() + month + day;
 			}
 			else if(mode==COM_DATE_TIME)
 			{
 				String hour = dt.Hour.ToString();
-				AddZeroTime(hour);
+				AddZeroTime(ref hour);
 				String minute = dt.Minute.ToString();
-				AddZeroTime(minute);
+				AddZeroTime(ref minute);
 				String second = dt.Second.ToString();
-				AddZeroTime(second);
+				AddZeroTime(ref second);
 				ret_str = hour + minute + second;
 			}
 			else
@@ -330,7 +330,7 @@ namespace ShadowNote_CS
 		}
 
 		//処理しやすいように一桁なら0を付ける
-		public void AddZeroTime(String time)
+		public void AddZeroTime(ref String time) //refを付けることで参照渡しになる。ポインタ的な
 		{
 			if (int.Parse(time) < 10)
 			{

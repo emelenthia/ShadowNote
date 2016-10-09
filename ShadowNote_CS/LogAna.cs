@@ -277,7 +277,6 @@ namespace ShadowNote_CS
 								{
 									bNotCount = true;
 								}
-								imakonohen
 							}
 							break;
 						case "Week":
