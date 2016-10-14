@@ -13,6 +13,22 @@ namespace ShadowNote_CS
 	class Common
 	{
 		public const int numclass = 7;
+		//この配列をクラス名に利用
+		private String[] ClassNameList =
+		{
+			"エルフ",
+			"ロイヤル",
+			"ウィッチ",
+			"ドラゴン",
+			"ネクロマンサー",
+			"ヴァンパイア",
+			"ビショップ"
+		};
+
+		public String[] GetClassNameList()
+		{
+			return ClassNameList;
+		}
 
 		public String ChangeClassName(String classname)
 		{

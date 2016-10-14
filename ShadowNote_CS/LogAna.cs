@@ -96,6 +96,8 @@ namespace ShadowNote_CS
 		private void button_Ana_Click(object sender, EventArgs e)
 		{
 			Analysising(0);
+			Analysising(1);
+			Analysising(2);
 		}
 
 
@@ -120,7 +122,6 @@ namespace ShadowNote_CS
 					m_numwinfirst.Add(MakeAnaData("ネクロマンサー", -1));
 					m_numwinfirst.Add(MakeAnaData("ヴァンパイア", -1));
 					m_numwinfirst.Add(MakeAnaData("ビショップ", -1));
-					m_numwinfirst.Add(MakeAnaData("計", -1));
 
 					m_numlosefirst.Add(MakeAnaData("ロイヤル", -1));
 					m_numlosefirst.Add(MakeAnaData("エルフ", -1));
@@ -129,7 +130,6 @@ namespace ShadowNote_CS
 					m_numlosefirst.Add(MakeAnaData("ネクロマンサー", -1));
 					m_numlosefirst.Add(MakeAnaData("ヴァンパイア", -1));
 					m_numlosefirst.Add(MakeAnaData("ビショップ", -1));
-					m_numlosefirst.Add(MakeAnaData("計", -1));
 
 					m_numwinsecond.Add(MakeAnaData("ロイヤル", -1));
 					m_numwinsecond.Add(MakeAnaData("エルフ", -1));
@@ -138,7 +138,6 @@ namespace ShadowNote_CS
 					m_numwinsecond.Add(MakeAnaData("ネクロマンサー", -1));
 					m_numwinsecond.Add(MakeAnaData("ヴァンパイア", -1));
 					m_numwinsecond.Add(MakeAnaData("ビショップ", -1));
-					m_numwinsecond.Add(MakeAnaData("計", -1));
 
 					m_numlosesecond.Add(MakeAnaData("ロイヤル", -1));
 					m_numlosesecond.Add(MakeAnaData("エルフ", -1));
@@ -147,7 +146,6 @@ namespace ShadowNote_CS
 					m_numlosesecond.Add(MakeAnaData("ネクロマンサー", -1));
 					m_numlosesecond.Add(MakeAnaData("ヴァンパイア", -1));
 					m_numlosesecond.Add(MakeAnaData("ビショップ", -1));
-					m_numlosesecond.Add(MakeAnaData("計", -1));
 				}
 				break;
 			case 1:
@@ -163,7 +161,6 @@ namespace ShadowNote_CS
 					m_numwinfirst.Add(MakeAnaData("AA2", -1));
 					m_numwinfirst.Add(MakeAnaData("AA3", -1));
 					m_numwinfirst.Add(MakeAnaData("Master", -1));
-					m_numwinfirst.Add(MakeAnaData("計", -1));
 
 					m_numwinsecond.Add(MakeAnaData("フリー", -1));
 					m_numwinsecond.Add(MakeAnaData("A未満", -1));
@@ -176,7 +173,6 @@ namespace ShadowNote_CS
 					m_numwinsecond.Add(MakeAnaData("AA2", -1));
 					m_numwinsecond.Add(MakeAnaData("AA3", -1));
 					m_numwinsecond.Add(MakeAnaData("Master", -1));
-					m_numwinsecond.Add(MakeAnaData("計", -1));
 
 					m_numlosefirst.Add(MakeAnaData("フリー", -1));
 					m_numlosefirst.Add(MakeAnaData("A未満", -1));
@@ -189,7 +185,6 @@ namespace ShadowNote_CS
 					m_numlosefirst.Add(MakeAnaData("AA2", -1));
 					m_numlosefirst.Add(MakeAnaData("AA3", -1));
 					m_numlosefirst.Add(MakeAnaData("Master", -1));
-					m_numlosefirst.Add(MakeAnaData("計", -1));
 
 					m_numlosesecond.Add(MakeAnaData("フリー", -1));
 					m_numlosesecond.Add(MakeAnaData("A未満", -1));
@@ -202,7 +197,6 @@ namespace ShadowNote_CS
 					m_numlosesecond.Add(MakeAnaData("AA2", -1));
 					m_numlosesecond.Add(MakeAnaData("AA3", -1));
 					m_numlosesecond.Add(MakeAnaData("Master", -1));
-					m_numlosesecond.Add(MakeAnaData("計", -1));
 				}
 				break;
 			case 2:
@@ -249,14 +243,14 @@ namespace ShadowNote_CS
 					}
 					if (checkBox_Myclass.Checked)
 					{
-						if (readstr[0] == (string)comboBox_Mydec.SelectedItem)
+						if (readstr[0] != (string)comboBox_Mydec.SelectedItem)
 						{
 							bNotCount = true;
 						}
 					}
 					if (checkBox_Eneclass.Checked)
 					{
-						if (readstr[2] == (string)comboBox_Eneclass.SelectedItem)
+						if (readstr[2] != (string)comboBox_Eneclass.SelectedItem)
 						{
 							bNotCount = true;
 						}
@@ -281,17 +275,26 @@ namespace ShadowNote_CS
 							break;
 						case "Week":
 							{
-
+								if(ts.Days > 6)
+                                {
+									bNotCount = true;
+								}
 							}
 							break;
 						case "Month":
 							{
-
+								if (ts.Days > 29)
+								{
+									bNotCount = true;
+								}
 							}
 							break;
 						case "Season":
 							{
-
+								if(dt.Month != read_dt.Month)
+								{
+									bNotCount = true;
+								}
 							}
 							break;
 						}
@@ -342,7 +345,7 @@ namespace ShadowNote_CS
 			int num_numlosesecond = 0;
 			int num_add = 1;
 
-			int array_num = m_numwinfirst.Count - 1; //合計の分を減らす
+			int array_num = m_numwinfirst.Count;
 
 			//入れる処理を使いまわす
 			DataGridView pDGV;
@@ -365,58 +368,100 @@ namespace ShadowNote_CS
 			pDGV.Rows.Clear();
 			for (int i = 0; i < array_num; i++)
 			{
-				//表示の簡略化
-				int winfirst_now = ((AnaData)m_numwinfirst[i]).GetCount();
-				int losefirst_now = ((AnaData)m_numlosefirst[i]).GetCount();
-				int winsecond_now = ((AnaData)m_numwinsecond[i]).GetCount();
-				int losesecond_now = ((AnaData)m_numlosesecond[i]).GetCount();
-				string name_now = ((AnaData)m_numwinfirst[i]).GetName();
+					//表示の簡略化
+					int winfirst_now = ((AnaData)m_numwinfirst[i]).GetCount();
+					int losefirst_now = ((AnaData)m_numlosefirst[i]).GetCount();
+					int winsecond_now = ((AnaData)m_numwinsecond[i]).GetCount();
+					int losesecond_now = ((AnaData)m_numlosesecond[i]).GetCount();
+					string name_now = ((AnaData)m_numwinfirst[i]).GetName();
 
-				//先攻後攻の勝負数を計算して、0回の場合は0除算を回避する
-				numfirst = winfirst_now + losefirst_now;
-				numsecond = winsecond_now + losesecond_now;
+					//先攻後攻の勝負数を計算して、0回の場合は0除算を回避する
+					numfirst = winfirst_now + losefirst_now;
+					numsecond = winsecond_now + losesecond_now;
 
-				//ID,クラス名,先攻勝数,先攻敗数,先攻勝率,後攻勝数,後攻敗数,後攻勝率,,
-				if (numfirst != 0 && numsecond != 0) //両方0回でない場合
-				{
-					firstper = Math.Round(winfirst_now * 100.0 / numfirst, 2, MidpointRounding.AwayFromZero);
-					secondper = Math.Round((winsecond_now * 100.0 / numsecond), 2, MidpointRounding.AwayFromZero);
-					allper = Math.Round(((winfirst_now + winsecond_now) * 100.0 / (numfirst + numsecond)), 2, MidpointRounding.AwayFromZero);
-
-					pDGV.Rows.Add(num_add, name_now, winfirst_now, losefirst_now, firstper
-						, winsecond_now, losesecond_now, secondper, winfirst_now + winsecond_now, losefirst_now + losesecond_now, allper);
-				}
-				else if (numfirst + numsecond == 0) //両方0回の場合
-				{
-					if (mode != 2) //デッキ毎モードでは、両方0回の時は登録しない
+					//ID,クラス名,先攻勝数,先攻敗数,先攻勝率,後攻勝数,後攻敗数,後攻勝率,,
+					if (numfirst != 0 && numsecond != 0) //両方0回でない場合
 					{
-						pDGV.Rows.Add(num_add, name_now, 0, 0, 0.0, 0, 0, 0.0, 0, 0, 0.0);
+						firstper = Math.Round(winfirst_now * 100.0 / numfirst, 2, MidpointRounding.AwayFromZero);
+						secondper = Math.Round((winsecond_now * 100.0 / numsecond), 2, MidpointRounding.AwayFromZero);
+						allper = Math.Round(((winfirst_now + winsecond_now) * 100.0 / (numfirst + numsecond)), 2, MidpointRounding.AwayFromZero);
+
+						pDGV.Rows.Add(num_add, name_now, winfirst_now, losefirst_now, firstper
+							, winsecond_now, losesecond_now, secondper, winfirst_now + winsecond_now, losefirst_now + losesecond_now, allper);
 					}
-					else
+					else if (numfirst + numsecond == 0) //両方0回の場合
 					{
-						num_add--; //IDはこれでごまかす
+						if (mode != 2) //デッキ毎モードでは、両方0回の時は登録しない
+						{
+							pDGV.Rows.Add(num_add, name_now, 0, 0, 0.0, 0, 0, 0.0, 0, 0, 0.0);
+						}
+						else
+						{
+							num_add--; //IDはこれでごまかす
+						}
 					}
-				}
-				else if (numfirst == 0) //先攻0回の場合
-				{
-					secondper = Math.Round((winsecond_now * 100.0 / numsecond), 2, MidpointRounding.AwayFromZero);
-					pDGV.Rows.Add(num_add, name_now, 0, 0, 0.0
-						   , winsecond_now, losesecond_now, secondper, winsecond_now, losesecond_now, secondper);
+					else if (numfirst == 0) //先攻0回の場合
+					{
+						secondper = Math.Round((winsecond_now * 100.0 / numsecond), 2, MidpointRounding.AwayFromZero);
+						pDGV.Rows.Add(num_add, name_now, 0, 0, 0.0
+							   , winsecond_now, losesecond_now, secondper, winsecond_now, losesecond_now, secondper);
 
-				}
-				else //後攻0回の場合
-				{
-					firstper = Math.Round(winfirst_now * 100.0 / numfirst, 2, MidpointRounding.AwayFromZero);
-					pDGV.Rows.Add(num_add, name_now, winfirst_now, losefirst_now, firstper
-						, 0, 0, 0.0, winfirst_now, losefirst_now, firstper);
-				}
+					}
+					else //後攻0回の場合
+					{
+						firstper = Math.Round(winfirst_now * 100.0 / numfirst, 2, MidpointRounding.AwayFromZero);
+						pDGV.Rows.Add(num_add, name_now, winfirst_now, losefirst_now, firstper
+							, 0, 0, 0.0, winfirst_now, losefirst_now, firstper);
+					}
 
-				//合計を出す
-				num_numwinfirst += winfirst_now;
-				num_numlosefirst += losefirst_now;
-				num_numwinsecond += winsecond_now;
-				num_numlosesecond += losesecond_now;
-				num_add++;
+					//クラスによって色を変える処理
+					if (mode == 2)
+					{
+						if (numfirst + numsecond != 0) //合計が0の時は表示しないので塗らない
+						{
+							Color tempcolor = Color.White;
+							switch (m_com.GetClassNameList()[((AnaData)m_numwinfirst[i]).GetClassNumber()])
+							{
+							case "エルフ":
+								tempcolor = Color.Green;
+								break;
+							case "ロイヤル":
+								tempcolor = Color.LightGoldenrodYellow;
+								break;
+							case "ウィッチ":
+								tempcolor = Color.Aqua;
+								break;
+							case "ドラゴン":
+								tempcolor = Color.Orange;
+								break;
+							case "ネクロマンサー":
+								tempcolor = Color.Violet;
+								break;
+							case "ヴァンパイア":
+								tempcolor = Color.Red;
+								break;
+							case "ビショップ":
+								tempcolor = Color.Gray;
+								break;
+							default:
+								break;
+							}
+
+							for (int ci = 0; ci < pDGV.ColumnCount; ci++)
+							{
+								pDGV[ci, num_add - 1].Style.BackColor = tempcolor;
+							}
+						}
+					}
+
+					//合計を出す
+					num_numwinfirst += winfirst_now;
+					num_numlosefirst += losefirst_now;
+					num_numwinsecond += winsecond_now;
+					num_numlosesecond += losesecond_now;
+					num_add++;
+				
+
 			}
 
 			//上手く合計出せないのかな
