@@ -166,5 +166,10 @@ namespace ShadowNote_CS
 			LogAna logana = new LogAna();
 			logana.Show(this); //モードレスダイアログではdispose()を呼び出す必要がない
 		}
+
+		private void button_FileShow_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process P = System.Diagnostics.Process.Start("BattleLog.log");
+        }
 	}
 }

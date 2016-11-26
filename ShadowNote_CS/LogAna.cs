@@ -115,32 +115,32 @@ namespace ShadowNote_CS
 			{
 			case 0:
 				{
-					m_numwinfirst.Add(MakeAnaData("ロイヤル", -1));
 					m_numwinfirst.Add(MakeAnaData("エルフ", -1));
+					m_numwinfirst.Add(MakeAnaData("ロイヤル", -1));
 					m_numwinfirst.Add(MakeAnaData("ウィッチ", -1));
 					m_numwinfirst.Add(MakeAnaData("ドラゴン", -1));
 					m_numwinfirst.Add(MakeAnaData("ネクロマンサー", -1));
 					m_numwinfirst.Add(MakeAnaData("ヴァンパイア", -1));
 					m_numwinfirst.Add(MakeAnaData("ビショップ", -1));
 
-					m_numlosefirst.Add(MakeAnaData("ロイヤル", -1));
 					m_numlosefirst.Add(MakeAnaData("エルフ", -1));
+					m_numlosefirst.Add(MakeAnaData("ロイヤル", -1));
 					m_numlosefirst.Add(MakeAnaData("ウィッチ", -1));
 					m_numlosefirst.Add(MakeAnaData("ドラゴン", -1));
 					m_numlosefirst.Add(MakeAnaData("ネクロマンサー", -1));
 					m_numlosefirst.Add(MakeAnaData("ヴァンパイア", -1));
 					m_numlosefirst.Add(MakeAnaData("ビショップ", -1));
 
-					m_numwinsecond.Add(MakeAnaData("ロイヤル", -1));
 					m_numwinsecond.Add(MakeAnaData("エルフ", -1));
+					m_numwinsecond.Add(MakeAnaData("ロイヤル", -1));
 					m_numwinsecond.Add(MakeAnaData("ウィッチ", -1));
 					m_numwinsecond.Add(MakeAnaData("ドラゴン", -1));
 					m_numwinsecond.Add(MakeAnaData("ネクロマンサー", -1));
 					m_numwinsecond.Add(MakeAnaData("ヴァンパイア", -1));
 					m_numwinsecond.Add(MakeAnaData("ビショップ", -1));
 
-					m_numlosesecond.Add(MakeAnaData("ロイヤル", -1));
 					m_numlosesecond.Add(MakeAnaData("エルフ", -1));
+					m_numlosesecond.Add(MakeAnaData("ロイヤル", -1));
 					m_numlosesecond.Add(MakeAnaData("ウィッチ", -1));
 					m_numlosesecond.Add(MakeAnaData("ドラゴン", -1));
 					m_numlosesecond.Add(MakeAnaData("ネクロマンサー", -1));

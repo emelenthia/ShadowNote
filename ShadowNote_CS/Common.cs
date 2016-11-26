@@ -274,7 +274,7 @@ namespace ShadowNote_CS
 
 
 		//DeckList.txtからデッキリストを読み込む
-		public void DeckListLoad(ComboBox comboBox_MyDec,ComboBox comboBox_EneDec, ArrayList[] ene_decklist, ArrayList mydeckclass)
+		public void DeckListLoad(ComboBox comboBox_MyDec, ComboBox comboBox_EneDec, ArrayList[] ene_decklist, ArrayList mydeckclass)
 		{
 			//ファイルから情報を読み込む
 			using (StreamReader sr = new StreamReader("DeckList.txt"))
