@@ -23,10 +23,12 @@ namespace ShadowNote_CS
 		private ArrayList[] m_ene_decklist;
 		private ArrayList m_mydeckclass; //自分の各デッキに対応するクラスを保存
 
+
 		public LogAna()
 		{
 			InitializeComponent();
 		}
+
 
 		private void LogAna_Load(object sender, EventArgs e)
 		{
@@ -55,11 +57,14 @@ namespace ShadowNote_CS
 			comboBox_dummy = null;
 		}
 
+
 		public AnaData MakeAnaData(String name, int classnumber)
 		{
 			AnaData ret_anadata = new AnaData(name, classnumber);
 			return ret_anadata;
 		}
+
+
 		public int IndexOfAnaData(ArrayList array, AnaData _object)
 		{
 			int numinarray = array.Count;
@@ -487,6 +492,13 @@ namespace ShadowNote_CS
 			}
 			pDGV.Rows.Add(num_add, "計", num_numwinfirst, num_numlosefirst, firstper
 						, num_numwinsecond, num_numlosesecond, secondper, num_numwinfirst + num_numwinsecond, num_numlosefirst + num_numlosesecond, allper);
+
+
+
+			if (checkBox_except.Checked)
+			{
+				ExceptLowBattleDeck(pDGV);
+			}
 		}
 
 
@@ -517,6 +529,34 @@ namespace ShadowNote_CS
 				}
 				break;
 			}
+		}
+
+
+		//指定した対戦数以下のデッキを表示しない
+		private void ExceptLowBattleDeck(DataGridView pDGV)
+		{
+			int deck_num = pDGV.RowCount;
+			int except_num = int.Parse(textBox_ExceptBattle.Text);
+
+			for (int i = 0; i < deck_num; i++)
+			{
+				if((int)pDGV.Rows[i].Cells[8].Value + (int)pDGV.Rows[i].Cells[9].Value <= except_num)
+				{
+					pDGV.Rows[i].Visible = false;
+				}
+			}
+		}
+
+		
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 

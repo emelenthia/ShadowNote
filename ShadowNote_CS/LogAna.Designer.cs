@@ -84,6 +84,10 @@
 			this.comboBox_Eneclass = new System.Windows.Forms.ComboBox();
 			this.checkBox_TimeDesign = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.checkBox_except = new System.Windows.Forms.CheckBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.textBox_ExceptBattle = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
 			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Deck)).BeginInit();
 			this.tabPage2.SuspendLayout();
@@ -625,11 +629,50 @@
 			this.label5.TabIndex = 20;
 			this.label5.Text = "日時指定";
 			// 
+			// checkBox_except
+			// 
+			this.checkBox_except.AutoSize = true;
+			this.checkBox_except.Location = new System.Drawing.Point(10, 357);
+			this.checkBox_except.Name = "checkBox_except";
+			this.checkBox_except.Size = new System.Drawing.Size(15, 14);
+			this.checkBox_except.TabIndex = 24;
+			this.checkBox_except.UseVisualStyleBackColor = true;
+			this.checkBox_except.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(32, 339);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(41, 12);
+			this.label6.TabIndex = 23;
+			this.label6.Text = "対戦数";
+			// 
+			// textBox_ExceptBattle
+			// 
+			this.textBox_ExceptBattle.Location = new System.Drawing.Point(30, 358);
+			this.textBox_ExceptBattle.Name = "textBox_ExceptBattle";
+			this.textBox_ExceptBattle.Size = new System.Drawing.Size(55, 19);
+			this.textBox_ExceptBattle.TabIndex = 25;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(88, 361);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(68, 12);
+			this.label7.TabIndex = 26;
+			this.label7.Text = "戦以下を除く";
+			// 
 			// LogAna
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1256, 594);
+			this.Controls.Add(this.label7);
+			this.Controls.Add(this.textBox_ExceptBattle);
+			this.Controls.Add(this.checkBox_except);
+			this.Controls.Add(this.label6);
 			this.Controls.Add(this.checkBox_TimeDesign);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.checkBox_Eneclass);
@@ -719,5 +762,9 @@
 		private System.Windows.Forms.ComboBox comboBox_Eneclass;
 		private System.Windows.Forms.CheckBox checkBox_TimeDesign;
 		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.CheckBox checkBox_except;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox textBox_ExceptBattle;
+		private System.Windows.Forms.Label label7;
 	}
 }
