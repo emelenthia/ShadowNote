@@ -141,10 +141,66 @@ namespace ShadowNote_CS
 			comboBox_EneDec.Items.Clear();
 			int classnumber = m_com.GetClassNumber(comboBox_EneClass.Text);
 			int numdeck = m_ene_decklist[classnumber].Count;
+			int[] numbattles = new int[numdeck];
+			Array.Clear(numbattles, 0, numdeck);
+
+			//リストに入れる際に、対戦数が多い順にソートする
+			//まずは各デッキの対戦数を数える
+			using (StreamReader sr = new StreamReader("BattleLog.log"))
+			{
+				String[] readstr;
+				while (sr.EndOfStream == false)
+				{
+					readstr = sr.ReadLine().Split(',');
+					if(readstr[2] == m_com.ChangeClassOneName(classnumber))
+					{
+						for (int i = 0; i < numdeck; i++)
+						{
+							if (readstr[3] == (string)m_ene_decklist[classnumber][i])
+							{
+								numbattles[i]++;
+							}
+						}
+					}
+				}
+			}
+
+			//次に、対戦数が多いものから入れていく
+			while (true)
+			{
+				//今残っているもので最大を取って
+				int temp_max = 0;
+				for (int i = 0; i < numdeck; i++)
+				{
+					if (temp_max < numbattles[i])
+					{
+						temp_max = numbattles[i];
+					}
+				}
+				//最大が0、つまり全て入れ終わった状態になったらループから抜ける
+				if (temp_max == 0)
+				{
+					break;
+				}
+				//それと対戦数が同じものを入れる
+				for (int i = 0; i < numdeck; i++)
+				{
+					if (temp_max == numbattles[i])
+					{
+						comboBox_EneDec.Items.Add(m_ene_decklist[classnumber][i]);
+						numbattles[i] = 0;
+					}
+				}
+			}
+
+			/*
 			for (int i = 0; i < numdeck; i++)
 			{
 				comboBox_EneDec.Items.Add(m_ene_decklist[classnumber][i]);
 			}
+			*/
+
+			//最後に、リストの選択を一番上にする
 			if (comboBox_EneDec.Items.Count > 0)
 			{
 				comboBox_EneDec.SelectedIndex = 0;

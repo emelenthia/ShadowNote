@@ -139,6 +139,40 @@ namespace ShadowNote_CS
 		}
 
 
+		public string ChangeClassOneName(int number)
+		{
+
+			string sret = null;
+			switch (number)
+			{
+			case 0:
+				sret = "e";
+				break;
+			case 1:
+				sret = "r";
+				break;
+			case 2:
+				sret = "w";
+				break;
+			case 3:
+				sret = "d";
+				break;
+			case 4:
+				sret = "n";
+				break;
+			case 5:
+				sret = "v";
+				break;
+			case 6:
+				sret = "b";
+				break;
+			default:
+				sret = "null";
+				break;
+			}
+			return sret;
+		}
+
 		public int GetRankNumber(string str, int mode) //ランクを低い方から数えた際の順番を取得。配列の添字に使う。細かいモードと大雑把モードが有る
 		{
 
