@@ -73,7 +73,7 @@ namespace ShadowNote_CS
 			//各変数の初期化
 			m_com = new Common();
 			m_ene_decklist = new ArrayList[numclass];
-			for(int i=0;i< numclass;i++)
+			for (int i = 0; i < numclass; i++)
 			{
 				m_ene_decklist[i] = new ArrayList();
 			}

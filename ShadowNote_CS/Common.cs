@@ -24,10 +24,29 @@ namespace ShadowNote_CS
 			"ヴァンパイア",
 			"ビショップ"
 		};
-
 		public String[] GetClassNameList()
 		{
 			return ClassNameList;
+		}
+
+		//大雑把なランクリスト
+		private readonly String[] RankListRoughly =
+		{
+			"フリー",
+			"A未満",
+			"A0",
+			"A1",
+			"A2",
+			"A3",
+			"AA0",
+			"AA1",
+			"AA2",
+			"AA3",
+			"Master"
+		};
+		public String[] GetRankListRoughly()
+		{
+			return RankListRoughly;
 		}
 
 		public String ChangeClassName(String classname)
@@ -86,6 +105,11 @@ namespace ShadowNote_CS
 
 		public void SetClassList(ComboBox cb)
 		{
+			for(int i=0;i<numclass;i++)
+			{
+				cb.Items.Add(ClassNameList[i]);
+			}
+			/*
 			cb.Items.Add("エルフ");
 			cb.Items.Add("ロイヤル");
 			cb.Items.Add("ウィッチ");
@@ -93,6 +117,7 @@ namespace ShadowNote_CS
 			cb.Items.Add("ネクロマンサー");
 			cb.Items.Add("ヴァンパイア");
 			cb.Items.Add("ビショップ");
+			*/
 			cb.SelectedIndex = 0;
 			cb.Update();
 		}
