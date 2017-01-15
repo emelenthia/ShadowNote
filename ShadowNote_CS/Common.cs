@@ -105,19 +105,10 @@ namespace ShadowNote_CS
 
 		public void SetClassList(ComboBox cb)
 		{
-			for(int i=0;i<numclass;i++)
+			for (int i = 0; i < numclass; i++)
 			{
 				cb.Items.Add(ClassNameList[i]);
 			}
-			/*
-			cb.Items.Add("エルフ");
-			cb.Items.Add("ロイヤル");
-			cb.Items.Add("ウィッチ");
-			cb.Items.Add("ドラゴン");
-			cb.Items.Add("ネクロマンサー");
-			cb.Items.Add("ヴァンパイア");
-			cb.Items.Add("ビショップ");
-			*/
 			cb.SelectedIndex = 0;
 			cb.Update();
 		}

@@ -33,14 +33,13 @@ namespace ShadowNote_CS
 			using (StreamWriter sw = new StreamWriter("BattleLog.log", true))
 			{
 				String writestr;
-				Common com = new Common();
 				//各種コントロールから保存する文章を作成
 				//自クラス,自デッキ名,相手クラス,相手デッキ名,勝敗(w or l),先攻後攻(f or s or n),ランク,(日付)20160912,(時刻)163855
 				//デッキ名からクラスを取得する
 
 				writestr = (string)m_mydeckclass[comboBox_MyDec.SelectedIndex];
 				writestr += "," + comboBox_MyDec.Text;
-				writestr += "," + com.ChangeClassName(comboBox_EneClass.Text);
+				writestr += "," + m_com.ChangeClassName(comboBox_EneClass.Text);
 				writestr += "," + comboBox_EneDec.Text;
 				writestr += "," + (comboBox_Winlose.Text=="勝利" ? "w" : "l");
 				writestr += "," + (comboBox_FirstSecond.Text != "忘れた" ? (comboBox_FirstSecond.Text != "先攻" ? "s" : "f") : "n");
@@ -51,7 +50,6 @@ namespace ShadowNote_CS
 				writestr += "," + m_com.FormatTime(dt, Common.COM_DATE_TIME);
 
 				sw.Write(writestr + "\n");
-				com = null;
 				statusStrip1.Items.Add(writestr + "を保存しました");
 				m_timer = new Timer();
 				m_timer.Tick += new EventHandler(TimeCount);
@@ -227,5 +225,13 @@ namespace ShadowNote_CS
 		{
 			System.Diagnostics.Process P = System.Diagnostics.Process.Start("BattleLog.log");
         }
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			DeckDel deckdel = new DeckDel();
+			deckdel.ShowDialog(this);
+			deckdel.Dispose();
+			m_com.DeckListLoad(comboBox_MyDec, comboBox_EneDec, m_ene_decklist, m_mydeckclass);
+		}
 	}
 }

@@ -9,3 +9,4 @@ C:\Users\amber\Documents\Visual Studio 2015\Projects\ShadowNote_CS\ShadowNote_CS
 C:\Users\amber\Documents\Visual Studio 2015\Projects\ShadowNote_CS\ShadowNote_CS\obj\Debug\ShadowNote_CS.Form1.resources
 C:\Users\amber\Documents\Visual Studio 2015\Projects\ShadowNote_CS\ShadowNote_CS\obj\Debug\ShadowNote_CS.DeckAdd.resources
 C:\Users\amber\Documents\Visual Studio 2015\Projects\ShadowNote_CS\ShadowNote_CS\obj\Debug\ShadowNote_CS.LogAna.resources
+C:\Users\amber\Documents\Visual Studio 2015\Projects\ShadowNote_CS\ShadowNote_CS\obj\Debug\ShadowNote_CS.DeckDel.resources
